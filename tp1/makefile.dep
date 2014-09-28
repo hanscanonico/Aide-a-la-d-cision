@@ -1,3 +1,0 @@
-main.o: main.cpp Arc.hpp
-Arc.o: Arc.cpp Arc.hpp
-Sommet.o: Sommet.cpp Sommet.hpp
