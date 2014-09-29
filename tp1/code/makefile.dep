@@ -1,0 +1,4 @@
+main.o: main.cpp Arc.hpp Sommet.hpp Graphe.hpp
+Arc.o: Arc.cpp Arc.hpp
+Sommet.o: Sommet.cpp Sommet.hpp
+Graphe.o: Graphe.cpp Graphe.hpp Arc.hpp Sommet.hpp
