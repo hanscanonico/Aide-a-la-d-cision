@@ -10,7 +10,7 @@ class Graphe
     private:
         string nom;
         vector<Sommet> list_sommets;
-		vector<Arc*> list_arcs;
+		vector<Arc> list_arcs;
     public:
         Graphe(string nom);
         void read(string filename);

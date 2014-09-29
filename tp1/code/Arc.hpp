@@ -11,6 +11,7 @@ class Arc{
 		int duree;
 	public:
 		Arc(int id,int id_origine,int id_destination, int distance);
+		Arc();
 		int getId();
 		int getIdOrigine();
 		int getIdDestination();

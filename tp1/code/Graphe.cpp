@@ -19,6 +19,7 @@ Graphe::Graphe(string nom):nom(nom),list_sommets(1),list_arcs(1)
 void Graphe::read(string filename)
 {
 	vector<Sommet>::iterator it;
+	vector<Arc>::iterator it2;
 	int nbNodes, nbArcs, idNode, valX, valY, succ, idArc, idFrom, idTo;
 	size_t pos;
 	char* data=(char*)malloc(300*sizeof(char));
@@ -49,7 +50,7 @@ void Graphe::read(string filename)
 		{
 			if(strcmp(str.c_str(),"No")==0)
 			{
-				coord=false;			// De toutes manières, je vais pas m'encombrer à faire deux parseurs, en fonction de si le fichier 
+				coord=false;			// De toutes manières, je vais pas m'encombrer à faire deux parseurs, en fonction de si le fichier
 										// précise des coordonnées ou pas.
 			}
 			else
@@ -62,15 +63,15 @@ void Graphe::read(string filename)
 		str=str.substr(pos+1);
 		str.erase(remove(str.begin(),str.end(),' '), str.end());
 		nbArcs=atoi(str.c_str());
-		
+
 		list_sommets.resize(nbNodes);
 		list_arcs.resize(nbArcs);
-		
+
 		getline(fs,str);	// Ligne vide : OSEF
 		getline(fs,str);	// Ligne de commentaire : OSEF
-		
+
 		getline(fs,str);
-		
+
 		while(!str.empty())
 		{
 			strcpy(data,str.c_str());
@@ -111,14 +112,67 @@ void Graphe::read(string filename)
 				(list_sommets.at(atoi(tok.c_str())-1)).addPrec(idNode);
 				token=strtok(NULL,",*");
 			}
-			
+
 			getline(fs,str);
+
 		}
-		for(it=list_sommets.begin();it!=list_sommets.end();++it)
+		getline(fs,str); //ligne vide
+        getline(fs,str); //ligne de commentaireé
+		while(!str.empty())
+		{
+            strcpy(data,str.c_str());
+			token=strtok(data,",*");
+			tok.assign(token);
+			pos=tok.find('=');
+			tok=tok.substr(pos+1);
+			tok.erase(remove(tok.begin(),tok.end(),' '),tok.end());
+			idArc=atoi(tok.c_str());
+
+
+            token=strtok(NULL,",*");
+			tok.assign(token);
+			pos=tok.find('=');
+			tok=tok.substr(pos+1);
+			tok.erase(remove(tok.begin(),tok.end(),' '),tok.end());
+			idFrom=atoi(tok.c_str());
+
+
+
+            token=strtok(NULL,",*");
+			tok.assign(token);
+			pos=tok.find('=');
+			tok=tok.substr(pos+1);
+			tok.erase(remove(tok.begin(),tok.end(),' '),tok.end());
+			idTo=atoi(tok.c_str());
+
+            token=strtok(NULL,",*");
+			tok.assign(token);
+			pos=tok.find('=');
+			tok=tok.substr(pos+1);
+			tok.erase(remove(tok.begin(),tok.end(),' '),tok.end());
+			length=atof(tok.c_str());
+
+		    token=strtok(NULL,",*");
+			tok.assign(token);
+			pos=tok.find('=');
+			tok=tok.substr(pos+1);
+			tok.erase(remove(tok.begin(),tok.end(),' '),tok.end());
+			time=atof(tok.c_str());
+
+            list_arcs.push_back(Arc(idArc,idFrom,idTo,length));
+            getline(fs,str);
+		}
+
+        for(it=list_sommets.begin();it!=list_sommets.end();++it)
 		{
 			it->display();
 		}
-			
+
+
+		for(it2=list_arcs.begin();it2!=list_arcs.end();++it2)
+		{
+			it2->display();
+		}
 	}
 	else
 	{

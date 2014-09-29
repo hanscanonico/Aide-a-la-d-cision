@@ -5,7 +5,8 @@ using namespace std;
 
 Arc::Arc(int id,int id_origine,int id_destination, int distance):id(id),id_origine(id_origine),id_destination(id_destination),distance(distance)
 {}
-
+Arc::Arc()
+{}
 int Arc::getId()
 {
 	return id;

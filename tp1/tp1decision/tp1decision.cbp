@@ -31,6 +31,13 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="../code/Arc.cpp" />
+		<Unit filename="../code/Arc.hpp" />
+		<Unit filename="../code/Graphe.cpp" />
+		<Unit filename="../code/Graphe.hpp" />
+		<Unit filename="../code/Sommet.cpp" />
+		<Unit filename="../code/Sommet.hpp" />
+		<Unit filename="../code/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
