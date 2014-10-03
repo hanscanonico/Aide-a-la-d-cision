@@ -1,0 +1,9 @@
+main.o: main.cpp Arc.hpp Sommet.hpp Graphe.hpp Pcc.hpp Bellman.hpp \
+ Dijkstra.hpp
+Arc.o: Arc.cpp Arc.hpp
+Sommet.o: Sommet.cpp Sommet.hpp
+Graphe.o: Graphe.cpp Graphe.hpp Arc.hpp Sommet.hpp
+Bellman.o: Bellman.cpp Bellman.hpp Pcc.hpp Graphe.hpp Arc.hpp Sommet.hpp
+Dijkstra.o: Dijkstra.cpp Dijkstra.hpp Pcc.hpp Graphe.hpp Arc.hpp \
+ Sommet.hpp
+Pcc.o: Pcc.cpp Pcc.hpp Graphe.hpp Arc.hpp Sommet.hpp
