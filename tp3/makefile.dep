@@ -1,0 +1,3 @@
+main.o: main.cpp Operation.hpp
+Operation.o: Operation.cpp Operation.hpp
+Probleme.o: Probleme.cpp Probleme.hpp Operation.hpp
